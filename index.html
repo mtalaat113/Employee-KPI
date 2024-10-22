@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .login-container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="loginButton">Login</button>
+    <p id="loginMessage" style="color: red;"></p>
+</div>
+
+<script>
+    // Sample user data (this should be your converted JSON data)
+    const usersData = [
+        { "Username": "user1", "Password": "pass1" },
+        { "Username": "user2", "Password": "pass2" }
+    ];
+
+    // Function to validate login
+    document.getElementById('loginButton').addEventListener('click', function () {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const user = usersData.find(user => user.Username === username && user.Password === password);
+
+        const messageElement = document.getElementById('loginMessage');
+        if (user) {
+            messageElement.textContent = 'Login successful!';
+            messageElement.style.color = 'green';
+            // Here you can redirect to another page to show KPI data
+            // For example: window.location.href = 'kpi.html';
+        } else {
+            messageElement.textContent = 'Invalid username or password.';
+            messageElement.style.color = 'red';
+        }
+    });
+</script>
+
+</body>
+</html>
